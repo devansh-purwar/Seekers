@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seekers</title>
+    <link rel="icon" href="/media/edit.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        span{
+    color: rgb(128, 128, 128) !important;
+}
+.spn-x{
+    color: rgb(82, 79, 79) !important;
+    font-weight: 600 !important;
+    
+}
+.btn-cmn{
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: rgb(255, 255, 255) !important;
+    padding:10px 20px;
+    background: rgb(254, 103, 77) !important;
+    border-radius: 25px !important;
+    text-align: center;
+    border: none !important;
+}
+.btn-cmn:hover{
+    background: rgb(190, 84, 66) !important;
+}
+    </style>
+</head>
+
+<body>
+    <div style="min-height:calc(100vh - 70px);">
+    <%- include('../partials/flash')%>
+        <% if (currentUser) { %>
+            <%- include('../partials/login_navbar') %>
+                <% } else { %>
+                    <%- include('../partials/navbar') %>
+                        <% } %>
+                            <div class="container">
+                                <div class="row mt-5" style="height:calc(2.25rem + 2px) ;">
+                                    <form action="/userProfiles/search" method="post" class="form-group d-flex align-items-center">
+                                        <select class="form-control" name="search[city]" id="city">
+                                            <option value="" disabled selected>Select Area</option>
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Kanpur">Kanpur</option>
+                                            <option value="Dharwad">Dharwad</option>
+                                            <option value="Hubli">Hubli</option>
+                                            <option value="Mumbai">Mumbai</option>
+                                        </select>
+                                        
+                                                    <select class="form-control" name="search[gender]" id="gender" style="margin-left:10px ;margin-right:10px">
+                                                        <option value="" disabled selected>Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option> 
+                                                    </select>
+                                                    <select class="form-control" name="search[looking]" id="looking" style="margin-right:10px">
+                                                        <option value="" disabled selected>Select</option>
+                                                        <option value="Room">Looking for Room</option>
+                                                        <option value="Team Up">Looking for Team Up</option>
+                                                    </select>
+
+                                        
+
+                                        <button type="submit" class="btn btn-primary btn-md">Search</button>
+                                    </form>
+                                </div>
+                                <div class="row">
+                                    <% if (profiles.length) { %>
+                                        <% for( let i = 0; i < profiles.length; i++ ) { %>
+                                            <div class="col-md-3 mt-4 mb-4 rounded" >
+                                                <div class="container mt-4 d-flex flex-column justify-content-start rounded" style="height: 100%;">
+                                                    <div class="row mt-3" style="height: 100%;width: 100%; margin:auto">
+                                                        <div class="col-md-12 d-flex justify-content-stretch" style="min-height: 100%;" >
+                                                            <img src="<%= profiles[i].images[0].url %> " class="img-fluid rounded" style="object-fit: cover;" alt="">
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-md-12">
+                                                               <span>Tags</span>
+                                                            </div>
+                                                        </div>
+                                                    <div class="row mt-1 mb-4">
+                                                        <div class="col-md-12 d-flex justify-content-between align-items-center">
+                                                            <span class="spn-x"><%=profiles[i].name%>, <%=new Date().getFullYear() -
+                                                             profiles[i].dob.slice(0,4) %></span>
+                                                             <a href="<%= '/userProfiles/' + profiles[i]._id %> "><button class="btn-cmn">View Profile</button></a> 
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>  
+                                            </div>
+                                            <% } %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="mt-4" style="background: #FF664D;height: 50px;"><span>&nbsp;</span></div>
+
+
+</body>
+
+</html>

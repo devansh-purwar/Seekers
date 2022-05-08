@@ -1,0 +1,116 @@
+#name span {
+    color: rgb(255, 102, 77);
+    font-size: 1.8em;
+    font-weight: bolder;
+    font-family: MYRIAD-BOLD;
+}
+
+.more-details span {
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: "open sans", sans-serif;
+}
+
+.about p {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "open sans", sans-serif;
+}
+
+.check-in p {
+    margin-bottom: 0px;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "open sans", sans-serif;
+}
+
+.budget p {
+    margin-bottom: 0px;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "open sans", sans-serif;
+}
+
+.joined p {
+    margin-bottom: 0px;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "open sans", sans-serif;
+}
+
+.more-about p {
+    margin-top: 5px;
+    margin-bottom: 4px;
+    text-align: justify;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: "open sans", sans-serif;
+}
+
+.lifestyle span {
+    margin-top: -1px;
+    display: block;
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: "open sans", sans-serif;
+}
+
+.tag {
+    padding: 0px 3px !important;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    display: inline-block !important;
+    border: 1.5px solid rgb(255, 102, 77);
+    ;
+    margin: 5px 1px 5px 1px;
+    border-radius: 4px;
+}
+
+.view-contact button {
+    font-size: 1.1em;
+    padding: 2px 20px;
+    background-color: #00d5cc;
+    color: white;
+    font-weight: bold;
+    border-color: transparent;
+    border-radius: 20px;
+}
+
+.view-contact {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.curve {
+    border-radius: 8px;
+}
+
+.share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share button {
+    font-size: 1.3em;
+    padding: 1px 20px;
+    background-color: rgb(255, 102, 77);
+    color: white;
+    font-weight: bold;
+    border-color: transparent;
+    border-radius: 8px;
+}
+
+.share button:active {
+    border-color: rgb(255, 102, 77);
+}
+
+@media only screen and (max-width: 575px) {
+    .share button {
+        margin-top: 40px;
+    }
+}

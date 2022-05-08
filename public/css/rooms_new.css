@@ -1,0 +1,57 @@
+input[type=radio]:hover {
+    cursor: pointer;
+}
+
+mb {
+    margin-bottom: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.custom-button {
+    font-weight: 450;
+    font-size: .875rem;
+    border: 0.1px solid #ced4da;
+    border-radius: 0.2rem;
+    padding: 5px 40px;
+    align-items: center;
+    margin-left: 0px;
+}
+
+.custom-button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked+label {
+    background-color: rgb(255, 102, 77);
+    color: white;
+}
+
+input {
+    line-height: 1.21428571em;
+    padding: 5px 1px;
+    font-size: 0.8em;
+    font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(34, 36, 38, .15);
+    border-radius: 0.25em;
+    transition: outline .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+select {
+    padding: 5px 1px;
+    line-height: 1.21428571em;
+    font-size: 0.8em;
+    font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(34, 36, 38, .15);
+    border-radius: 0.25em;
+    transition: outline .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+textarea {
+    line-height: 1.21428571em;
+    font-size: 0.8em;
+    font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(34, 36, 38, .15);
+    border-radius: 0.25em;
+    transition: outline .15s ease-in-out, box-shadow .15s ease-in-out;
+}

@@ -1,0 +1,39 @@
+.logo {
+    width: 10%;
+}
+
+body {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.room {
+    max-width: 100%;
+    /* margin-left: 2%;
+    margin-top: 1%;
+    margin-right: 2%; */
+}
+
+.container {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+h1 {
+    color: grey;
+    text-align: center;
+}
+
+.row {
+    margin-right: 6%;
+}
+
+/* .btn-primary {
+    margin-left: 23%;
+    margin-top: 2%;
+}
+
+.btn-danger {
+    margin-left: 5%;
+    margin-top: 2%;
+} */

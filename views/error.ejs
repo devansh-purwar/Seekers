@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seekers</title>
+    <link rel="icon" href="/media/edit.ico">
+    <link rel="stylesheet" href="/css/404.css">
+</head>
+
+<body>
+    <%- include('partials/flash')%>
+
+    <div class="site">
+        <div class="sketch">
+          <div class="bee-sketch red"></div>
+          <div class="bee-sketch blue"></div>
+        </div>
+      
+      <h1><%=err.statusCode%>
+        <small><%=err.message %>
+            <p class="output">Please try to <a href="javascript:history.back()">go back</a> or <a href="/">return to the
+                homepage</a>.</p>
+        <p class="output">Good luck.</p>
+        </small></h1>
+      </div>
+        
+</body>
+
+</html>

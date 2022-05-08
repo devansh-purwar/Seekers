@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/media/edit.ico">
+    <title>Seekers</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <link rel="icon" href="/media/edit.ico">
+    <!-- Custom styles for this template -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+</head>
+
+<body class="text-center">
+    <form id="signupform" method="post" action="/register" class="form-signin validated-form" novalidate>
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 474.000000 193.000000"
+            preserveAspectRatio="xMidYMid meet">
+
+            <g transform="translate(0.000000,193.000000) scale(0.100000,-0.100000)" fill="#FF664D" stroke="none">
+                <path d="M484 1709 c-18 -5 -46 -25 -63 -44 l-31 -36 0 -252 c0 -232 2 -255
+20 -284 38 -62 42 -63 435 -63 196 0 355 3 353 8 -1 4 -28 31 -59 60 l-56 52
+-287 0 -286 0 2 223 3 222 400 0 400 0 3 -117 3 -118 59 0 60 0 0 128 c0 108
+-3 132 -20 159 -42 70 -28 68 -490 70 -233 1 -429 -2 -446 -8z" />
+                <path d="M745 1389 c-93 -88 -171 -164 -173 -169 -2 -6 26 -10 70 -10 l73 0
+80 75 c123 116 117 113 164 74 22 -19 112 -101 200 -184 l160 -150 -2 -205 -2
+-205 -400 0 -400 0 -3 118 -3 117 -60 0 -61 0 4 -141 3 -141 37 -34 38 -34
+162 0 c741 -1 719 -2 745 15 13 9 33 30 43 48 18 29 20 52 20 257 0 259 8 235
+-110 345 -41 39 -150 141 -241 228 -92 86 -168 157 -170 156 -2 0 -80 -72
+-174 -160z" />
+                <path d="M2582 1168 c-9 -9 -12 -92 -12 -310 l0 -298 25 -12 c19 -8 31 -8 50
+0 24 11 25 16 25 92 0 44 3 80 6 80 3 0 43 -34 87 -76 107 -101 121 -110 152
+-96 14 6 28 24 31 39 7 25 -1 35 -85 113 l-92 86 75 71 c55 52 76 79 76 97 0
+25 -32 56 -57 56 -7 0 -50 -34 -94 -75 -45 -41 -86 -75 -90 -75 -5 0 -9 67 -9
+148 0 102 -4 152 -12 160 -15 15 -61 15 -76 0z" />
+                <path d="M1670 1011 c-123 -38 -197 -159 -172 -281 28 -131 137 -210 271 -197
+61 7 104 33 109 66 7 45 -55 80 -86 49 -17 -17 -94 -14 -122 5 -14 9 -33 30
+-43 47 l-18 30 168 0 c118 0 173 4 181 12 36 36 -10 175 -72 223 -62 47 -150
+66 -216 46z m137 -117 c25 -16 59 -62 51 -70 -3 -2 -60 -3 -127 -2 l-122 3 23
+35 c38 57 116 72 175 34z" />
+                <path d="M2200 1011 c-112 -34 -174 -119 -174 -236 0 -101 42 -171 129 -218
+57 -31 181 -31 222 -1 34 25 41 59 17 85 -21 23 -40 24 -88 4 -57 -24 -123 1
+-152 56 l-15 29 169 0 c117 0 172 4 180 12 18 18 14 87 -7 134 -48 106 -175
+167 -281 135z m102 -101 c34 -10 88 -59 88 -81 0 -5 -55 -9 -125 -9 -70 0
+-125 4 -125 9 0 5 12 23 26 40 21 25 56 44 94 50 3 1 22 -4 42 -9z" />
+                <path d="M3158 1005 c-61 -23 -106 -63 -134 -121 -23 -47 -26 -64 -22 -122 3
+-37 12 -82 22 -99 44 -87 144 -140 241 -130 98 10 144 52 111 102 -19 29 -39
+31 -92 9 -31 -13 -45 -14 -75 -5 -35 11 -89 60 -89 82 0 5 71 9 164 9 193 0
+202 4 192 77 -11 80 -59 148 -130 185 -51 26 -139 32 -188 13z m139 -104 c25
+-12 48 -32 58 -50 l16 -31 -126 0 c-138 0 -147 5 -97 53 51 49 87 56 149 28z" />
+                <path d="M3730 1011 c-47 -15 -87 -40 -119 -76 -53 -60 -62 -96 -62 -239 -1
+-113 2 -132 17 -143 24 -17 49 -16 68 3 13 12 16 38 16 120 0 156 33 217 127
+231 46 7 73 29 73 59 0 47 -51 66 -120 45z" />
+                <path d="M3972 1000 c-67 -41 -90 -120 -54 -189 29 -57 62 -75 154 -81 62 -4
+83 -9 92 -22 8 -13 8 -23 0 -35 -9 -15 -29 -18 -125 -21 -122 -3 -149 -13
+-149 -57 0 -45 27 -55 156 -55 136 0 173 12 211 69 42 62 23 159 -40 205 -21
+16 -49 22 -115 26 l-87 5 0 30 0 30 110 5 c105 5 110 6 124 31 13 24 13 29 -2
+53 -17 25 -20 26 -130 26 -94 0 -117 -3 -145 -20z" />
+                <path d="M782 903 l3 -58 55 0 55 0 3 58 3 57 -61 0 -61 0 3 -57z" />
+                <path d="M930 905 l0 -55 40 -1 c22 -1 48 -2 58 -3 14 -1 18 9 20 57 l3 57
+-61 0 -60 0 0 -55z" />
+                <path d="M780 755 l0 -55 60 0 60 0 0 55 0 55 -60 0 -60 0 0 -55z" />
+                <path d="M930 755 l0 -55 60 0 60 0 0 55 0 55 -60 0 -60 0 0 -55z" />
+            </g>
+        </svg>
+        <%- include('../partials/flash')%>
+            <h1 class="h5 mb-3 font-weight-normal">Register</h1>
+            <div class="mb-3">
+                <label for="inputUsername" class="form-label sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username"
+                    required autofocus>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address"
+                    required>
+                <label for="inputPassword" class="form-label sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password"
+                    required>
+            </div>
+
+            <label for="confirmPassword" class="form-label sr-only">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" name="cPassword"
+                placeholder="Confirm Password" required>
+
+            <button class="btn btn-lg btn-danger btn-block" type="submit">Register</button>
+            <br>
+            <a href="/login">Already have an account?</a>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+    </form>
+    <script src="/js/validateForms.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

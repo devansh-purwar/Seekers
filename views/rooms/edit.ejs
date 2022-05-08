@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/rooms_new.css">
+    <style>
+        input{
+   text-align:center;
+}
+    </style>
+    <title>Seekers</title>
+    <link rel="icon" href="/media/edit.ico">
+</head>
+
+<body>
+   
+    <%- include('../partials/flash')%>
+    <% if (currentUser) { %>
+        <%- include('../partials/login_navbar') %>
+            <% } else { %>
+                <%- include('../partials/navbar') %>
+                    <% } %>
+                        <div class="container" style="margin-top: 10px;">
+                            <div class="row">
+                                <div class="col-0 col-lg-1"> </div>
+                                <div class="col-12 col-lg-10">
+                                    <form action="/rooms/<%=room._id%>?_method=PUT" class="form-group validated-form"
+                                        autocomplete="off" method="POST" novalidate enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div
+                                                    style="border-bottom-style: solid; border-width: 4px; border-color: rgb(255, 102, 77);">
+                                                    <h2 style="color: rgb(112, 112, 112); font-size: 18px;">Location
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12">
+                                                <label for="city"
+                                                    style="display: block; font-weight: 450; font-size: 1.1em;">City</label>
+                                                <select name="room[city]" class="form-control form-control-sm" id="city"
+                                                    style="width: 48%;" required>
+                                                    <option value="" disabled selected>Select City</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Kanpur">Kanpur</option>
+                                                    <option value="Dharwad">Dharwad</option>
+                                                    <option value="Hubli">Hubli</option>
+                                                    <option value="Mumbai">Mumbai</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col col-sm-6" style="display: inline-block;">
+                                                <label for="address"
+                                                    style="font-weight: 450; font-size: 1.1em;">Address</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    name="room[address]" value="<%=room.address%>" id="address"
+                                                    width="20px" style="display: block; width: 100%;" required>
+                                            </div>
+                                            <div class="col col-sm-6" style="display: inline-block;">
+                                                <label for="neighbourhood"
+                                                    style="display: block; font-weight: 450; font-size: 1.1em;">Neighbour</label>
+
+                                                <select name="room[neighbourhood]" class="form-control form-control-sm"
+                                                    id="neighbourhood" style="width: 100%;" required>
+                                                    <option value="" disabled selected>Select Area</option>
+                                                    <option value="Railway Station" >Railway Station</option>
+                                                    <option value="Bus Stand">Bus Stand</option>
+                                                    <option value="Main Market">Main Market</option>
+                                                    <option value="Highway">Highway</option>
+                                                    <option value="Hospital">Hospital</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12">
+                                                <div
+                                                    style="border-bottom-style: solid; border-width: 4px; border-color: rgb(255, 102, 77);">
+                                                    <h2 style="color: rgb(112, 112, 112); font-size: 18px;">Room Details
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <div style="display: inline-block;">
+                                                    <span
+                                                        style=" display: inline-block; font-weight: 450; font-size: 1.1em; padding-bottom: 10px;">Availability</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <label for="from"
+                                                        style="font-weight: 450; font-size: 1.1em;">From</label>
+                                                    <% var today=new Date(); var
+                                                        dd=String(today.getDate()).padStart(2, '0' ); var
+                                                        mm=String(today.getMonth() + 1).padStart(2, '0' ); //January is
+                                                        var yyyy=today.getFullYear(); today=yyyy + '-' + mm + '-' + dd;
+                                                        %>
+                                                        <input type="date"
+                                                            class="flatpicker form-control form-control-sm"
+                                                            placeholder="Choose Date" id="from" name="room[dateStart]"
+                                                            value="<%=room.dateStart%>"
+                                                            style="width: 35%; display: inline-block !important; background-color: white;"
+                                                            required>
+                                                        <label for="to"
+                                                            style="font-weight: 450; font-size: 1.1em;">To</label>
+                                                        <input type="date"
+                                                            class="flatpicker form-control form-control-sm"
+                                                            placeholder="Choose Date" id="to"
+                                                            name="room[dateEnd]" value="<%=room.dateEnd%>"
+                                                            style="width: 35%; display: inline-block !important; background-color: white"
+                                                            required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-4" style="margin-bottom: 10px;">
+                                                <label for="stay"
+                                                    style="display: block; font-weight: 450; font-size: 1.1em;">Min
+                                                    Stay(months)</label>
+                                                <select name="room[minStay]" value="<%=room.minStay%>"
+                                                    class="form-control form-control-sm" id="stay"
+                                                    style="display: block; width: 100%; margin-top: -5px;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="Doesn't matter">Doesn't matter</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-2" style="margin-bottom: 10px;">
+                                                <label for="bed" style="font-weight: 450; font-size: 1.1em;">Bed</label>
+                                                <select name="room[bed]" value="<%=room.bed%> "
+                                                    class="form-control form-control-sm" id="bed"
+                                                    style="display: block; width: 100%; margin-top: -5px;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Double">Double</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <div style="display: inline-block;">
+                                                    <span style="font-weight: 450; font-size: 1.1em;">EnSuite</span>
+                                                </div>
+                                                <div  class="d-flex justify-content-center">
+                                                    <div class="form-check"
+                                                        style="display: inline-block; padding-left: 0px;">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="room[ensuite]" value="Yes" id="ensuit-yes"
+                                                            style="display: none;" required>
+                                                        <label class="form-check-label custom-button" for="ensuit-yes"
+                                                            style="border:1px solid #FF664D;border-right: none; border-radius: 8px 0px 0px 8px;">
+                                                            Yes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check"
+                                                        style="display: inline-block; padding-left: 0px;">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="room[ensuite]" value="No" id="ensuit-no"
+                                                            style="display: none;" required>
+                                                        <label class="form-check-label custom-button" for="ensuit-no"
+                                                            style="border-radius: 0px 8px 8px 0px;border:1px solid #FF664D; ">
+                                                            No
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-0 col-sm-0 col-lg-1"></div> -->
+
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <div style="display: block;">
+                                                    <span
+                                                        style="font-weight: 450; font-size: 1.1em;">Housemates(including
+                                                        you)</span>
+                                                </div>
+                                                <select name="room[mateMale]" class="form-control form-control-sm"
+                                                    id="male" style="display: inline-block; width: 49%;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="" disabled selected>Male</option>
+                                                    <option value="0">0 Male</option>
+                                                    <option value="1">1 Male</option>
+                                                    <option value="2">2 Male</option>
+                                                    <option value="3">3 Male</option>
+                                                    <option value="4">4 Male</option>
+                                                </select>
+                                                <select name="room[mateFemale]" class="form-control form-control-sm"
+                                                    id="female" style="display: inline-block; width: 49%;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="" disabled selected>Female</option>
+                                                    <option value="0">0 Female</option>
+                                                    <option value="1">1 Female</option>
+                                                    <option value="2">2 Female</option>
+                                                    <option value="3">3 Female</option>
+                                                    <option value="4">4 Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col col-sm-6" style="margin-bottom: 10px;">
+                                                <label for="rent"
+                                                    style="display: block; font-weight: 450; font-size: 1.1em;">Rent</label>
+                                                <input type="number" class="form-control form-control-sm" id="rent"
+                                                    name="room[rent]" value="<%=room.rent%>" required>
+                                            </div>
+                                            <div class="col col-sm-6" style="margin-bottom: 10px;">
+                                                <label for="deposit"
+                                                    style="display: block; font-weight: 450; font-size: 1.1em;">Deposit</label>
+                                                <input type="number" class="form-control form-control-sm" id="Deposite"
+                                                    name="room[deposit]" value="<%=room.deposit%>" style="width: 100%;"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12 col-sm-6" style="margin-top: 5px; margin-bottom: 10px;">
+                                                <div style="display: inline-block;">
+                                                    <span style="font-weight: 450; font-size: 1.1em;">Bills
+                                                        Included?</span>
+                                                </div>
+                                                <div >
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="form-check"
+                                                            style="display: inline-block; padding-left: 0px;">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="room[bills]" value="Yes" id="bills-yes"
+                                                                style="display: none;" required>
+                                                            <label class="form-check-label custom-button"
+                                                                for="bills-yes"
+                                                                style="border:1px solid #FF664D;border-right: none; border-radius: 8px 0px 0px 8px;">
+                                                                Yes
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check"
+                                                            style="display: inline-block; padding-left: 0px;">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="room[bills]" value="No" id="bills-no"
+                                                                style="display: none;" required>
+                                                            <label class="form-check-label custom-button" for="bills-no"
+                                                                style="border-radius: 0px 8px 8px 0px;border:1px solid #FF664D; ">
+                                                                No
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-12">
+                                                <div
+                                                    style="border-bottom-style: solid; border-width: 4px; border-color: rgb(255, 102, 77);">
+                                                    <h2 style="color: rgb(112, 112, 112); font-size: 18px;">More Room
+                                                        Details</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <div style="margin-bottom: 10px;">
+                                                    <div style="margin-bottom: 8px;"><span
+                                                            style="display: block; font-weight: 450; font-size: 1.1em;">Slogan</span>
+                                                    </div>
+                                                    <select name="room[slogan]" id="slogan"
+                                                        class="form-control form-control-sm" required>
+                                                        <option value="This house has no slogan">This house has no
+                                                            slogan</option>
+                                                        <option value="Party all the time!!">Party all the time!!
+                                                        </option>
+                                                        <option value="Study, sleep, repeat">Study, sleep, repeat
+                                                        </option>
+                                                        <option value="We each love our own time and space">We each love
+                                                            our own time and
+                                                            space</option>
+                                                        <option value="Work all night, sleep all day">Work all night,
+                                                            sleep all day</option>
+                                                        <option value="We each love our own time and space">We each love
+                                                            our own time and
+                                                            space</option>
+                                                        <option value="Roommates who spend time together">Roommates who
+                                                            spend time together
+                                                        </option>
+                                                        <option value="Work hard, play hard">Work hard, play hard
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div style="margin-top: 5px; margin-bottom: 10px;">
+                                                    <label for="description"
+                                                        style="display: block; font-weight: 450; font-size: 1.1em;">Description</label>
+                                                    <textarea row="20" class="form-control form-control-sm"
+                                                        name="room[description]" id="description"
+                                                        style="width: 100%; height: 100px;"
+                                                        placeholder="Use this space to tell people more about you, the house and your neighbourhood!"
+                                                        required><%=room.description%> </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 mb3" style="margin-bottom: 10px;">
+                                                <div style="margin-bottom: 8px;">Upload Images</div>
+                                                <div class="form-file custom-file">
+                                                    <input type="file" class="form-file-input" id="image" name="image"
+                                                        multiple hidden>
+                                                    <label class="form-file-label" for="image">
+                                                        <span class="form-file-text custom-file-label"
+                                                            aria-placeholder=".PDF .JPEG .PNG"></span>
+                                                        <span class="form-file-button d-none">Browse</span>
+                                                    </label>
+                                                </div>
+                                                <% room.images.forEach(function(img, i) { %>
+                                                    <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="" style="height: 50px;width: 50px;object-fit: cover;">
+                                                    <div class="form-check-inline">
+                                                        <input type="checkbox" id="image-<%=i%>" name="deleteImages[]"
+                                                            value="<%=img.filename%>">
+                                                    </div>
+                                                    <label for="image-<%=i%>">Delete?</label>
+                                                    <% })%>
+                                            </div>
+                                            <!-- <div class="col-12 col-sm-6 mb3" style="margin-bottom: 10px;">
+                            
+                        </div> -->
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12">
+                                                <div
+                                                    style="border-bottom-style: solid; border-width: 4px; border-color: rgb(255, 102, 77);">
+                                                    <h2 style="color: rgb(112, 112, 112); font-size: 18px;">Preferences
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col" style="margin-top: 4px;"><span
+                                                    style="font-size: 0.9em;">Potential Roommate(s)
+                                                    should be:</span></div>
+                                        </div>
+                                        <div class="row" style="margin-top: 15px;">
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <label for="living-as"
+                                                    style="font-weight: 450; font-size: 1.1em;">Living As</label>
+                                                <select name="room[livingAs]" class="form-control form-control-sm"
+                                                    id="living-as"
+                                                    style="display: block; width: 100%; margin-top: -5px;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="doesn't matter">Doesn't matter</option>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Couple">Couple</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <label for="status"
+                                                    style="font-weight: 450; font-size: 1.1em;">Status</label>
+                                                <select name="room[status]" class="form-control form-control-sm"
+                                                    id="status" style="display: block; width: 100%; margin-top: -5px;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="Doesn't matter">Doesn't matter</option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Professional">Professional</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 0px;">
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <label for="gender"
+                                                    style="font-weight: 450; font-size: 1.1em;">Gender</label>
+                                                <select name="room[gender]" class="form-control form-control-sm"
+                                                    id="gender" style="display: block; width: 100%; margin-top: -5px;"
+                                                    aria-placeholder="Months" required>
+                                                    <option value="Doesn't matter">Doesn't matter</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-6" style="margin-bottom: 10px;">
+                                                <div style="display: inline-block;">
+                                                    <span style="font-weight: 450; font-size: 1.1em;">Age</span>
+                                                </div>
+                                                <div style="display: flex; justify-content: space-between;">
+                                                    <label for="from"
+                                                        style="font-weight: 450; font-size: 1.1em;">From</label>
+                                                    <input type="number" class="form-control form-control-sm"
+                                                        name="room[ageMin]" value="<%=room.ageMin%>" id="from"
+                                                        style="width: 35%; display: inline-block !important;" required>
+                                                    <label for="to"
+                                                        style="font-weight: 450; font-size: 1.1em;">To</label>
+                                                    <input type="number" class="form-control form-control-sm"
+                                                        name="room[ageMax]" value="<%=room.ageMax%>" id="to"
+                                                        style="width: 35%; display: inline-block !important" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 25px;">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary btn-sm"
+                                                    style="background-color: rgb(0, 213, 204); border-color: rgb(0, 213, 204);">List
+                                                    my
+                                                    room!</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-0 col-lg-1"> </div>
+
+                            </div>
+                        </div>
+                 
+                    <footer class="footer mt-4" style="background: #FF664D;height: 50px;">
+                        <span>&nbsp;</span>
+                    </footer>
+
+                        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                        <script src="/js/flatpicker_today.js"></script>
+                        <script src="/js/validateForms.js"></script>
+                        <script>const room = <%-JSON.stringify(room) %></script>
+                        <script src="/js/rooms_edit.js"></script>
+</body>
+
+</html>

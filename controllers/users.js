@@ -42,18 +42,19 @@ module.exports.register = async (req, res, next) => {
         const user = new User({ email, username, verifyToken });
         const registeredUser = await User.register(user, password);
         console.log('||||||||||||||||',registeredUser,"||||||||||");
-        sendEmailVerificationLink(user, verifyToken, req, res => {
-            if (res == 200) {
-                res.send({ code: '010', msg: "Signup Successfull & Verification Email Successfully Sent!" });
-            } else {
-                res.send({ code: '011', msg: "Signup Successfull but failed to send verification email" });
-            }
-        });
+        // sendEmailVerificationLink(user, verifyToken, req, res => {
+        //     if (res == 200) {
+        //         res.send({ code: '010', msg: "Signup Successfull & Verification Email Successfully Sent!" });
+        //     } else {
+        //         res.send({ code: '011', msg: "Signup Successfull but failed to send verification email" });
+        //     }
+        // });
         console.log(registeredUser, "registeredUser");
         req.login(registeredUser, err => {
             console.log(err, "err");
             if (err) return next(err);
-            req.flash('success', 'Welcome to Seekers! , Verify your email to get started!');
+            req.flash('success', 'Welcome to Seekers!');
+            // req.flash('success', 'Welcome to Seekers! , Verify your email to get started!');
             res.redirect('/');
         });
 

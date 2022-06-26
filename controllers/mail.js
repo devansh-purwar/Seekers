@@ -1,16 +1,15 @@
-
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'firststeptovalidation@gmail.com',
-        pass: 'high5@idk',
+        user: process.env.VALIDATION_EMAIL,
+        pass: process.env.VALIDATION_EMAIL_PASSWORD,
     },
 });
 
 const mailData = {
-    from: 'firststeptovalidation@gmail.com',
-    to: 'chotupurwar@gmail.com',
+    from: process.env.VALIDATION_EMAIL,
+    to: process.env.TO_EMAIL,
     subject: 'Account Verification'
 }
 

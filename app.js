@@ -101,31 +101,31 @@ app.get('/', catchAsync( async (req, res) => {
     console.log("---------------------- Profiles ---------------------",profiles)
     res.render('home', { rooms : rooms.slice(0,4), profiles:profiles.slice(0,4) })
 }));
-app.get('/verify', (req, res) => {
-    const query = req.query;
-    User.findById(query.user, (err, user) => {
-        if (err) {
-            console.log(err)
-        } else {
-            if (user.verifyToken === query.token) {
-                user.isVerified = true;
-                user.save((err) => {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        console.log("User verified!", user)
-                        req.flash('success', 'Your account has been verified! , You can create your profile now.')
-                        res.redirect('/userProfiles/new')
-                    }
-                })
-            } else {
-                console.log("User verification failed!", user)
-                req.flash('error', 'Invalid token')
-                res.redirect('/')
-            }
-        }
-    })
-})
+// app.get('/verify', (req, res) => {
+//     const query = req.query;
+//     User.findById(query.user, (err, user) => {
+//         if (err) {
+//             console.log(err)
+//         } else {
+//             if (user.verifyToken === query.token) {
+//                 user.isVerified = true;
+//                 user.save((err) => {
+//                     if (err) {
+//                         console.log(err)
+//                     } else {
+//                         console.log("User verified!", user)
+//                         req.flash('success', 'Your account has been verified! , You can create your profile now.')
+//                         res.redirect('/userProfiles/new')
+//                     }
+//                 })
+//             } else {
+//                 console.log("User verification failed!", user)
+//                 req.flash('error', 'Invalid token')
+//                 res.redirect('/')
+//             }
+//         }
+//     })
+// })
 
 
 app.all('*', (req, res, next) => {
